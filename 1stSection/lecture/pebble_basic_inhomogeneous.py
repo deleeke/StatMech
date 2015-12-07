@@ -11,9 +11,9 @@ for iter in range(n_iter):
     new_pos = neighbor[pos][random.randint(0, 3)]
     if random.random() < weight[new_pos] / weight[pos]:
         pos = new_pos
-    histo[pos] += 1 
+    histo[pos] += 1
 
 norm = sum(weight)
 print 'comparison:  weight, histogram'
-for k in range(9): 
+for k in range(9):
     print 'site: ', k,' weight: ', weight[k], ' histo: ', norm * histo[k] / float(n_iter)
