@@ -56,7 +56,7 @@ def run_the_trials(n_runs, n_trials):
             print result
     print 'Markov chain Monte Carlo Results: %.6f' % result
 
-def visualization(stoneData):
+def visualization(stoneData, missesData):
      #set up pygame
      pygame.init()
      mainClock = pygame.time.Clock()
@@ -80,7 +80,7 @@ def visualization(stoneData):
      MISSEDSTONESIZE = 5
      missedCoords = []
 
-     stoneFile = open(sf, 'r')
+     stoneFile = open(stoneData, 'r')
      stoneFile = stoneFile.read()
      stones = stoneFile.split('\n')
      del(stones[-1])
@@ -92,7 +92,7 @@ def visualization(stoneData):
      for i in range(len(stones)):
          stoneCoords.append(pygame.Rect(stones[i][0], stones[i][1], STONESIZE, STONESIZE))
 
-     missedFile = open(mf, 'r')
+     missedFile = open(missesData, 'r')
      missedFile = missedFile.read()
      misses = missedFile.split('\n')
      del(misses[-1])
@@ -137,6 +137,6 @@ while runs == 0:
         message = "How many runs of trials of %d iterations do you want to run? \n > " % trials
         runs = int(raw_input(message))
         run_the_trials(runs, trials)
-        visualization('stoneDataFile.txt')
+        visualization(sf, mf)
     except ValueError:
         UsrError("Please enter an integer")
